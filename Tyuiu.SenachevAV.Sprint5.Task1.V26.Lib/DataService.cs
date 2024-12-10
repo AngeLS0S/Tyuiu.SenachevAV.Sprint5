@@ -6,32 +6,17 @@ namespace Tyuiu.SenachevAV.Sprint5.Task1.V26.Lib
     {
         public string SaveToFileTextData(int startValue, int stopValue)
         {
-            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
-
-            FileInfo fileInfo = new FileInfo(path);
-            bool fileExists = fileInfo.Exists;
-
-            if (fileExists)
+            double[] res = new double[11];
+            string path = Path.GetTempFileName();
+            File.WriteAllText(path, "");
+            for (int i = startValue; i <= stopValue; i++)
             {
-                File.Delete(path);
-            }
-
-            double y;
-            string strY;
-
-            for (int x = startValue; x <= stopValue; x++)
-            {
-                y = Math.Round (2 * x + 6 / Math.Cos(x) + x - 3, 2);
-                strY = Convert.ToString (y);
-
-                if (x != stopValue)
-                {
-                    File.AppendAllText(path, strY + Environment.NewLine);
-                }
+                if (Math.Cos(i) + i == 0) res[i + 5] = 0;
                 else
                 {
-                    File.AppendAllText(path, strY);
+                    res[i + 5] = Math.Round((double)(2 * i + 6) / (Math.Cos(i) + i) - 3, 2);
                 }
+                File.AppendAllText(path, res[i + 5].ToString() + "\n");
             }
             return path;
         }
