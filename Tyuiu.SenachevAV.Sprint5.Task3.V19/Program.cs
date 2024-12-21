@@ -5,6 +5,7 @@ internal class Program
     private static void Main(string[] args)
     {
         DataService ds = new();
+        int x = 3;
 
         Console.Title = "Спринт #5 | Выполнил: Сеначев А.В. | АСОиУБ-24-1";
         Console.WriteLine("***************************************************************************");
@@ -22,7 +23,6 @@ internal class Program
         Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
         Console.WriteLine("***************************************************************************");
 
-        int x = 3;
         Console.WriteLine("X = " + x);
 
 
@@ -30,11 +30,10 @@ internal class Program
         Console.WriteLine("***************************************************************************");
         Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
         Console.WriteLine("***************************************************************************");
+
         string res = ds.SaveToFileTextData(x);
 
         Console.WriteLine("Файл" + res);
         Console.WriteLine("Создан!");
-
-        Console.ReadKey();
     }
 }
